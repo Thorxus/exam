@@ -1,0 +1,72 @@
+<div class="container-fluid">
+    <h3 class="h3 mt-2">Final Examination in Event Driven Programming</h3>
+    <p>Philip Llames <br> BSIT - 3B <br> <a routerLink="/register">Go To Registration Page</a></p>
+
+    <div class="container my-3 border py-2">
+
+        <h5 class="h5">Set A</h5>
+
+        <p class="h6">1. How to create reactive forms?</p>
+        <p><strong>Answer:</strong> To create reactive forms in Angular, you use the FormBuilder service. This service helps you construct a FormGroup, which is the core of a reactive form. You then define the form controls within the FormGroup using FormControl instances.</p><hr>
+
+        <p class="h6">2. How to add built-in validation for email in reactive form?</p>
+        <p><strong>Answer:</strong> To add built-in email validation, you use the email validator provided by Angular. <br><br>
+            <strong>Example:</strong> <br>
+            this.email = new FormControl('', [Validators.required, Validators.email]); </p><hr>
+        
+        <p class="h6">3. How to add built-in validation for required fields in reactive form?</p>
+        <p><strong>Answer:</strong> To add the required field validator, use the required validator provided by Angular. <br><br>
+        <strong>Example: </strong><br> this.name = new FormControl('', Validators.required);</p><hr>
+
+        <p class="h6">4. How to add regex validation for reactive forms</p>
+        <p><strong>Answer: </strong> You can create custom validators using regular expressions (regex). <br><br>
+        <strong>Example: </strong> <br>
+        const customValidator = (control: AbstractControl): ValidationErrors | null => &#123; <br>
+            const regex = /^[a-zA-Z]+$/; <br>
+            return regex.test(control.value) ? null : &#123; 'nameInvalid': true &#125;; 
+          &#125;; <br>
+          
+          this.name = new FormControl('', [Validators.required, customValidator]);</p><hr>
+
+        <p class="h6">5. How to generate routing</p>
+        <p><strong>Answer: </strong><br>Using Angular CLI: <br>
+            * ng generate component component-name <br>
+            * ng generate module module-name <br>
+        Manually: <br>
+            * Create a new component (e.g., my-component.component.ts, my-component.component.html, my-component.component.css) <br>
+            * Create a module (e.g., my-component.module.ts) and import the component into it. <br>
+            * Configure the routing in your app-routing.module.ts file.</p><hr>
+
+            <p class="h6">6. How to configure routes with parameters?</p>
+            <p><strong>Answer: </strong><br>
+                * In the route definition: <br>
+                &#123; path: 'user/:id', component: UserDetailComponent &#125; <br>
+ 
+                * In the component: <br>
+                constructor(private route: ActivatedRoute) &#123; &#125; <br>
+ 
+                 ngOnInit() &#123; <br>
+                this.route.paramMap.subscribe(params => &#123; <br>
+                const userId = params.get('id'); <br> 
+                 &#125;); <br>
+                &#125;
+            </p><hr>
+
+            <p class="h6">7. What is DebounceTime in RxJS?</p>
+            <p><strong>Answer: </strong>DebounceTime is an RxJS operator that suppresses the emission of values from a source Observable for a specified duration. It only emits the last value emitted by the source Observable within the duration. This is useful for preventing rapid emissions, such as in search input fields.</p><hr>
+
+            <p class="h6">8. What is pipe operator?</p>
+            <p><strong>Answer: </strong>The pipe operator in RxJS is used to chain multiple operators together to transform and manipulate the stream of data emitted by an Observable. It allows you to create complex data flows in a concise and readable manner.</p><hr>
+
+            <p class="h6">9. What is distinctUntilChanged operator?</p>
+            <p><strong>Answer: </strong> distinctUntilChanged is an RxJS operator that suppresses duplicate consecutive values emitted by the source Observable. It only emits a value if it is different from the previous emitted value.</p><hr>
+
+            <p class="h6">10. What is filter operator in RxJs?</p>
+            <p><strong>Answer: </strong>filter is an RxJS operator that selectively emits values from the source Observable based on a given predicate function. It only emits values that satisfy the condition defined in the predicate.</p>
+
+            <div class="text-end">
+                <a routerLink="register" class="btn btn-outline-success">Go To Registration Page</a>
+            </div>
+
+    </div>
+</div>

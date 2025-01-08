@@ -1,0 +1,66 @@
+<form class="container-fluid mt-5 col-sm-8 col-lg-4 shadow mt-3 rounded" [formGroup]="Form" (ngSubmit)="onRegister()">
+ 
+    <h2 class="h2 text-center pt-3">Registration Form</h2>
+    <hr>
+
+    <div *ngIf="registered">
+        <div class="bg-success text-center h6 py-3 text-light">Registration Successful.</div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="name"><i class="bi bi-person-raised-hand text-success h5"></i> First Name:</label>
+      <input class="form-control border-info" id="name" formControlName="name" placeholder="ex. Juan"/>
+      <div *ngIf="name?.invalid && name?.touched">
+        <small class="text-danger" *ngIf="name?.hasError('required')">*this field is required.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label mt-2" for="lastName"><i class="bi bi-person-arms-up text-warning h5"></i> Last Name:</label>
+        <input class="form-control border-info" id="lastName" formControlName="lastName" placeholder="ex. Cruz"/>
+        <div *ngIf="lastname?.invalid && lastname?.touched">
+          <small class="text-danger" *ngIf="lastname?.hasError('required')">*this field is required.</small>
+        </div>
+      </div>
+  
+    <div class="form-group">
+      <label class="form-label mt-2" for="email"><i class="bi bi-envelope-fill text-primary h5"></i> Email Address:</label>
+      <input class="form-control border-info" id="email" formControlName="email" placeholder="ex. user@email.com"/>
+      <div *ngIf="email?.invalid && email?.touched">
+        <small class="text-danger" *ngIf="email?.hasError('required')">*this field is required.</small>
+        <small class="text-danger" *ngIf="email?.hasError('email')">*enter a valid email address</small>
+      </div>
+    </div>
+
+  
+    <div class="form-group">
+      <label class="form-label mt-2" for="mobile"><i class="bi bi-telephone-fill text-info h5"></i> Mobile Number:</label>
+      <input class="form-control border-info" id="mobile" formControlName="mobile" />
+      <div *ngIf="mobile?.invalid && mobile?.touched">
+        <small class="text-danger" *ngIf="mobile?.hasError('required')">*this field is required.</small>
+        <small class="text-danger" *ngIf="mobile?.hasError('pattern')">*please enter a valid mobile number.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label mt-2" for="username"><i class="bi bi-person-fill text-secondary h5"></i> Username:</label>
+        <input class="form-control border-info" id="username" formControlName="username" />
+        <div *ngIf="username?.invalid && username?.touched">
+          <small class="text-danger" *ngIf="username?.hasError('required')">*this field is required.</small>
+          <small class="text-danger" *ngIf="username?.hasError('email')">*username must be in an email format.</small>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label class="form-label mt-2" for="password"><i class="bi bi-gear-fill text-dark h5"></i> Password:</label>
+        <input class="form-control border-info" type="password" id="password" formControlName="password" />
+        <div *ngIf="password?.invalid && password?.touched">
+          <small class="text-danger" *ngIf="password?.hasError('required')">*this field is required.</small>
+          <small class="text-danger" *ngIf="password?.hasError('strongPassword') && !password?.hasError('required')">*password is weak. please include an uppercase and lowercase letter, a number and a special character. password must be at least 8 characters long</small>
+        </div>
+      </div>
+    <div class="my-3 pb-2 d-grid">
+      <button class="btn btn-primary" type="submit" [disabled]="Form.invalid">Register</button>
+      <a routerLink="" class="mt-2">Go to index page</a>
+    </div>
+</form>
